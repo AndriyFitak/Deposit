@@ -1,9 +1,12 @@
 // depositReducer.js
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  deposits: [],
+const loadDepositsFromLocalStorage = () => {
+  const deposits = JSON.parse(localStorage.getItem("deposits")) || [];
+  return { deposits };
 };
+
+const initialState = loadDepositsFromLocalStorage();
 
 export const depositSlice = createSlice({
   name: "deposits",
@@ -19,16 +22,21 @@ export const depositSlice = createSlice({
         interestRate,
         finalAmount,
       });
+
+      localStorage.setItem("deposits", JSON.stringify(state.deposits));
+    },
+    deleteDeposit: (state, action) => {
+      const index = action.payload;
+      state.deposits.splice(index, 1);
+      localStorage.setItem("deposits", JSON.stringify(state.deposits));
     },
   },
 });
 
-export const { addDeposit } = depositSlice.actions;
+export const { addDeposit, deleteDeposit } = depositSlice.actions;
 
 export default depositSlice.reducer;
 
-// Функція для розрахунку кінцевої суми
 const calculateFinalAmount = (initialAmount, months, interestRate) => {
-  // Логіка для розрахунку кінцевої суми - вставте свою формулу тут
   return initialAmount * (1 + (interestRate / 100) * months);
 };

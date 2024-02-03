@@ -1,0 +1,31 @@
+/* DepositList.css */
+
+.deposit-list-container {
+    margin-top: 20px;
+  }
+  
+  .deposit-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .deposit-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .deposit-details {
+    font-size: 16px;
+  }
+  .final-price{
+    font-size: 25px;
+  }
+  .delete-button{
+    width: 100px;
+    height: 30px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+
+  }

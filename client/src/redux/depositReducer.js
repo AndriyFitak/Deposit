@@ -40,3 +40,4 @@ export default depositSlice.reducer;
 const calculateFinalAmount = (initialAmount, months, interestRate) => {
   return initialAmount * (1 + (interestRate / 100) * months);
 };
+  
